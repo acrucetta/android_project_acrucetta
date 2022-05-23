@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Memory Challenger</string>
+    <string name="yourScore">Your Score: %1$d</string>
+    <string name="timeLeft">Time left: %1$d</string>
+    <string name="tapMe">Tap Me!</string>
+    <string name="gameOverMessage">Times over, your score was %1$d</string>
+    <string name="red">red</string>
+    <string name="green">green</string>
+    <string name="blue">blue</string>
+    <string name="orange">orange</string>
+    <string name="challenge">challenge</string>
+    <string name="save_pattern">save pattern</string>
+    <string name="yes">Yes</string>
+    <string name="game_start_title">New Memory Challenge</string>
+    <string name="game_info">Record up to 10 patterns, press save, and give it your friend to try his memory.</string>
+    <string name="understood">Understood</string>
+    <string name="gameTitle">Memory Challenger!</string>
+    <string name="ok">ok</string>
+    <string name="challengeTitle">Time for a Memory Challenge</string>
+    <string name="cancel">cancel</string>
+    <string name="finalResultTitle">Game Finished</string>
+</resources>

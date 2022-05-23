@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/timeLeftTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/timeLeft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gameScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/yourScore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/redButton"
+        android:layout_width="151dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/red"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/orangeButton"
+        app:layout_constraintEnd_toStartOf="@+id/greenButton"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/blueButton"
+        android:layout_width="151dp"
+        android:layout_height="139dp"
+        android:layout_marginEnd="52dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="@string/blue"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/greenButton"
+        android:layout_width="151dp"
+        android:layout_height="139dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:shadowColor="#00E12222"
+        android:text="@string/green"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/blueButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/orangeButton"
+        android:layout_width="151dp"
+        android:layout_height="139dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="@string/orange"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/blueButton"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/challengeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#74000000"
+        android:text="@string/challenge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/gameTitle"
+        android:layout_width="264dp"
+        android:layout_height="109dp"
+        android:gravity="center"
+        android:text="@string/gameTitle"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
