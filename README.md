@@ -12,7 +12,7 @@
 <h3 align="center">Memory Challenger</h3>
 
   <p align="center">
-    A fun way to test your friend's memory skills.
+    A fun way to test your friends' memory skills.
     <br />
     <a href="https://github.com/acrucetta/android_project_acrucetta"><strong>Explore the docs »</strong></a>
     <br />
