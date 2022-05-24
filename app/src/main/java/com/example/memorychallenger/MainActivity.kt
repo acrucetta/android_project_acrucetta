@@ -21,20 +21,22 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var greenButton: Button
     internal lateinit var orangeButton: Button
     internal lateinit var blueButton: Button
-    internal lateinit var saveButton: Button
     internal lateinit var challengeButton: Button
 
 
     internal lateinit var savedPattern: ArrayList<String>
     internal lateinit var triedPattern: ArrayList<String>
+    internal var numLastPatterns: Int = 0
 
     internal var score = 0
-    internal var gameStarted = false
+    internal var gameStarted = FALSE
     internal var isSettingColors: Boolean = true
+    internal var numRounds: Int = 0
 
     internal lateinit var countDownTimer: CountDownTimer
-    internal val initialCountDown: Long = 60000
+    internal var initialCountDown: Long = 60000
     internal val countDownInterval: Long = 1000
+    internal var timerRunning: Boolean = FALSE
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         savedPattern = ArrayList()
         triedPattern = ArrayList()
-
+        numLastPatterns = 0
 
         redButton = findViewById(R.id.redButton)
         greenButton = findViewById(R.id.greenButton)
@@ -116,6 +118,10 @@ class MainActivity : AppCompatActivity() {
                 builder.apply {
                     setPositiveButton(R.string.ok
                     ) { _, _ ->
+                        if (numRounds==0) {
+                            countDownTimer.start()
+                        }
+                        numRounds++
                         isSettingColors = FALSE
                     }
                 }
@@ -131,6 +137,9 @@ class MainActivity : AppCompatActivity() {
         showResults(numErrors)
         val finalScore = getFinalScore(numErrors)
         incrementScore(finalScore)
+        savedPattern = ArrayList()
+        triedPattern = ArrayList()
+        pauseTimer()
     }
 
     private fun triedMaxPatterns(): Boolean {
@@ -174,24 +183,35 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetGame() {
         score = 0
-
         gameScoreTextView.text = getString(R.string.yourScore, score)
+        startTimer()
+        gameStarted = false
+    }
+
+    private fun startTimer() {
         val initialTimeLeft = initialCountDown / 1000
         timeLeftTextView.text = getString(R.string.timeLeft, initialTimeLeft)
-
         countDownTimer = object : CountDownTimer(initialCountDown, countDownInterval) {
             override fun onTick(millisUntilFinished: Long) {
                 val timeLeft = millisUntilFinished / 1000
+                initialCountDown = timeLeft*1000
                 timeLeftTextView.text = getString(R.string.timeLeft, timeLeft)
             }
-
             override fun onFinish() {
                 endGame()
             }
         }
-        gameStarted = false
-        savedPattern = ArrayList()
-        triedPattern = ArrayList()
+        timerRunning = TRUE
+    }
+
+    private fun pauseTimer() {
+        if (timerRunning) {
+            countDownTimer.cancel()
+            timerRunning = FALSE
+        } else {
+            startTimer()
+            countDownTimer.start()
+        }
     }
 
     private fun incrementScore(incrementAmount: Int) {
