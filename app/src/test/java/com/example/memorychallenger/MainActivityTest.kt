@@ -1,5 +1,6 @@
 package com.example.memorychallenger
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.TextView
 import org.junit.Assert.*
@@ -11,6 +12,7 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import android.widget.Button
+import org.apache.tools.ant.taskdefs.condition.IsFalse
 
 @RunWith(RobolectricTestRunner::class)
 class MainActivityTest {
@@ -25,62 +27,26 @@ class MainActivityTest {
 
     @Test
     fun startsWithZeroInitialScore() {
-        val controller = Robolectric.buildActivity(MainActivity::class.java)
-        val systemUnderTest = controller.get()
+        val systemUnderTest = setUpTestableActivity()
         val scoreTextView = systemUnderTest.findViewById(R.id.gameScoreTextView) as TextView
+
 //        Then
         assertEquals("Your Score: 0", scoreTextView.text)
     }
 
     @Test
-    fun increasesScore_whenButtonPressed() {
-        val controller = Robolectric.buildActivity(MainActivity::class.java)
-        val systemUnderTest = controller.get()
-        val scoreTextView = systemUnderTest.findViewById(R.id.gameScoreTextView) as TextView
-        val tapMeButton = systemUnderTest.findViewById(R.id.tapMeButton) as Button
+    fun settingOffWhenChallengePressed() {
+        // Given
+        val systemUnderTest = setUpTestableActivity()
+        val challengeButton = systemUnderTest.findViewById(R.id.challengeButton) as Button
+        var isSettingStatus = systemUnderTest.isSettingColors
 
 //        When
-        tapMeButton.performClick()
+        challengeButton.performClick()
+        isSettingStatus = systemUnderTest.isSettingColors
 
 //        Then
-        assertEquals("Your Score: 1", scoreTextView.text)
-    }
-
-    @Test
-    fun gameRetainsScore_whenDeviceRotates() {
-
-        var controller = Robolectric.buildActivity(MainActivity::class.java)
-            .create()
-            .resume()
-            .visible()
-        var systemUnderTest = controller.get()
-        var scoreTextView = systemUnderTest.findViewById(R.id.gameScoreTextView) as TextView
-        val tapMeButton = systemUnderTest.findViewById(R.id.tapMeButton) as Button
-
-        tapMeButton.performClick()
-        tapMeButton.performClick()
-        tapMeButton.performClick()
-
-        assertEquals("Your Score: 3",scoreTextView.text)
-
-        // Rotate the device
-        val bundle = Bundle()
-
-        controller
-            .saveInstanceState(bundle)
-            .pause()
-            .stop()
-            .destroy()
-
-        controller = Robolectric.buildActivity(MainActivity::class.java)
-            .create(bundle)
-            .start()
-            .restoreInstanceState(bundle)
-            .resume()
-            .visible()
-        val recreatedSystemUnderTest = controller.get();
-        scoreTextView = recreatedSystemUnderTest.findViewById(R.id.gameScoreTextView) as TextView
-        assertEquals("Your Score: 3",scoreTextView.text)
+        assertEquals(false, isSettingStatus)
     }
 
     private fun setUpTestableActivity(): MainActivity {

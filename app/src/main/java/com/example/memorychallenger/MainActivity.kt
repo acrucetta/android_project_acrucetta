@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         challengeButton.setOnClickListener() {
+            isSettingColors = FALSE
             val alertDialog: AlertDialog = this.let {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle(getString(R.string.challengeTitle))
@@ -121,8 +122,6 @@ class MainActivity : AppCompatActivity() {
                         if (numRounds==0) {
                             countDownTimer.start()
                         }
-                        numRounds++
-                        isSettingColors = FALSE
                     }
                 }
                 builder.create()
@@ -134,12 +133,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun settleRound() {
         val numErrors = compareScores()
-        showResults(numErrors)
         val finalScore = getFinalScore(numErrors)
-        incrementScore(finalScore)
         savedPattern = ArrayList()
         triedPattern = ArrayList()
+
+        showResults(numErrors)
+        incrementScore(finalScore)
         pauseTimer()
+        numRounds++
     }
 
     private fun triedMaxPatterns(): Boolean {
