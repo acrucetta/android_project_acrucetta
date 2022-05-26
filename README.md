@@ -12,7 +12,7 @@
 <h3 align="center">Memory Challenger</h3>
 
   <p align="center">
-    A fun way to test your friend's memory skills.
+    A fun way to test your friends' memory skills.
     <br />
     <a href="https://github.com/acrucetta/android_project_acrucetta"><strong>Explore the docs »</strong></a>
     <br />
@@ -48,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/acrucetta/android_project_acrucetta)
+<img src="img/gameScreenshot.png" alt="Logo" width="200" height="350">
 
 Memory Challenger is a game for you to test you friend's remembering skills. You can set-up a set of colors, then your friend will take a look at them for a brief second and then try to repeat the pattern.
 
